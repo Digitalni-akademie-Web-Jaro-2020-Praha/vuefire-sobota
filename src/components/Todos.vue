@@ -6,7 +6,10 @@
       <button type="submit">Add todo</button>
     </form>
     <ul>
-      <li v-for="todo in todos" :key="todo.id">{{todo.label}}</li>
+      <li v-for="todo in todos" :key="todo.id">
+        <input type="checkbox" :checked="todo.done" @change="toggleStatus(todo.id, !todo.done)" />
+        {{todo.label}}
+      </li>
     </ul>
     <pre>
       {{JSON.stringify(todos, null, 2)}}
@@ -40,6 +43,13 @@ export default {
         });
 
       this.newTodoLabel = "";
+    },
+    toggleStatus(id, done) {
+      db.collection("todos")
+        .doc(id)
+        .update({
+          done
+        });
     }
   }
 };
