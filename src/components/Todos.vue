@@ -26,7 +26,7 @@ export default {
     };
   },
   firestore: {
-    todos: db.collection("todos")
+    todos: db.collection("todos").orderBy("label")
   },
   methods: {
     addTodo() {
