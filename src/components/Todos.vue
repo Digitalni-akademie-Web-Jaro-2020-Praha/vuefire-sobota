@@ -9,11 +9,9 @@
       <li v-for="todo in todos" :key="todo.id">
         <input type="checkbox" :checked="todo.done" @change="toggleStatus(todo.id, !todo.done)" />
         {{todo.label}}
+        <router-link :to="`/detail/${todo.id}`">detail</router-link>
       </li>
     </ul>
-    <pre>
-      {{JSON.stringify(todos, null, 2)}}
-    </pre>
   </div>
 </template>
 
