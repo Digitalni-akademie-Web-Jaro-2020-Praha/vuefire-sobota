@@ -1,4 +1,4 @@
-# Vue starter
+# Vuefire Todo app
 
 ## Instalace
 
