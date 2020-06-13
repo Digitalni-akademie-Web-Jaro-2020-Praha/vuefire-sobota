@@ -5,6 +5,12 @@
       <input type="text" v-model="newTodoLabel" />
       <button type="submit">Add todo</button>
     </form>
+    <ul>
+      <li v-for="todo in todos" :key="todo.id">{{todo.label}}</li>
+    </ul>
+    <pre>
+      {{JSON.stringify(todos, null, 2)}}
+    </pre>
   </div>
 </template>
 
@@ -15,8 +21,12 @@ export default {
   name: "Todos",
   data() {
     return {
-      newTodoLabel: ""
+      newTodoLabel: "",
+      todos: []
     };
+  },
+  firestore: {
+    todos: db.collection("todos")
   },
   methods: {
     addTodo() {
